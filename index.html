@@ -518,10 +518,56 @@
             background-color: #ECEFF1;
             color: var(--text-color);
         }
+      #login-screen{
+max-width:500px;
+margin:40px auto;
+background:#fff;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+#app{
+display:none;
+}  
     </style>
 </head>
 <body>
+<div id="login-screen">
 
+    <h2 style="text-align:center;color:#E67E22;margin-bottom:20px;">
+        تسجيل الدخول
+    </h2>
+
+    <div class="form-group">
+        <label>البريد الإلكتروني</label>
+        <input
+            type="email"
+            id="login-email"
+            class="form-control"
+            placeholder="example@email.com">
+    </div>
+
+    <div class="form-group">
+        <label>كلمة المرور</label>
+        <input
+            type="password"
+            id="login-password"
+            class="form-control"
+            placeholder="********">
+    </div>
+
+    <button class="btn-primary" onclick="loginUser()">
+        تسجيل الدخول
+    </button>
+
+    <br><br>
+
+    <button class="btn-secondary" onclick="registerUser()">
+        إنشاء حساب جديد
+    </button>
+
+</div>
     <header>
         <h1>غِراس</h1>
         <p>ازرع اليوم، واحصد غداً</p>
