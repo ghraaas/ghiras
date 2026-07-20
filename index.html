@@ -74,3 +74,723 @@
 </body>
 
 </html>
+:root{
+--primary:#E67E22;
+--primary-light:#FF9F43;
+--background:#FCF9F5;
+--card:#FFFFFF;
+--text:#4A3E3D;
+--muted:#8E7C77;
+--border:#F2E8DD;
+--danger:#C0392B;
+--radius:22px;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Tajawal',sans-serif;
+}
+
+body{
+background:var(--background);
+color:var(--text);
+}
+
+#app{
+width:100%;
+max-width:550px;
+margin:auto;
+padding:20px 18px 100px;
+min-height:100vh;
+}
+
+.header{
+text-align:center;
+padding:30px 0;
+}
+
+.logo{
+font-size:3rem;
+font-weight:900;
+color:var(--primary);
+margin-bottom:8px;
+}
+
+.subtitle{
+color:var(--muted);
+font-size:1rem;
+font-weight:600;
+}
+
+.page-card{
+background:var(--card);
+border-radius:var(--radius);
+padding:24px;
+margin-bottom:20px;
+border:1px solid var(--border);
+box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.page-title{
+text-align:center;
+font-size:1.5rem;
+font-weight:800;
+color:var(--primary);
+margin-bottom:25px;
+}
+
+.form-group{
+margin-bottom:18px;
+}
+
+.form-group label{
+display:block;
+margin-bottom:8px;
+font-weight:700;
+}
+
+.form-control{
+width:100%;
+padding:15px;
+border:2px solid var(--border);
+border-radius:14px;
+font-size:1rem;
+outline:none;
+background:white;
+}
+
+.form-control:focus{
+border-color:var(--primary);
+}
+
+.btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:16px;
+cursor:pointer;
+font-size:1rem;
+font-weight:800;
+}
+
+.btn-primary{
+background:linear-gradient(135deg,var(--primary-light),var(--primary));
+color:white;
+}
+
+.btn-secondary{
+background:#ECEFF1;
+color:var(--text);
+}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:72px;
+background:white;
+display:flex;
+justify-content:space-around;
+align-items:center;
+border-top:1px solid var(--border);
+box-shadow:0 -5px 20px rgba(0,0,0,.05);
+}
+
+.bottom-nav button{
+flex:1;
+height:100%;
+background:none;
+border:none;
+font-size:1rem;
+font-weight:700;
+cursor:pointer;
+color:var(--muted);
+}
+
+.bottom-nav button.active{
+color:var(--primary);
+border-top:3px solid var(--primary);
+}
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+
+import {
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+sendPasswordResetEmail,
+onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+
+import {
+getFirestore,
+doc,
+setDoc,
+getDoc,
+updateDoc,
+deleteDoc,
+collection,
+addDoc,
+getDocs,
+query,
+where
+} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyDCT_HSc_RKj6EFX-07iGyEeDioi_dk8Es",
+authDomain: "ghiras-cf0df.firebaseapp.com",
+projectId: "ghiras-cf0df",
+storageBucket: "ghiras-cf0df.firebasestorage.app",
+messagingSenderId: "432856276853",
+appId: "1:432856276853:web:381735e489071fc04f7d3c"
+};
+
+const app = initializeApp(firebaseConfig);
+
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+
+export {
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+sendPasswordResetEmail,
+onAuthStateChanged,
+doc,
+setDoc,
+getDoc,
+updateDoc,
+deleteDoc,
+collection,
+addDoc,
+getDocs,
+query,
+where
+};
+import {
+auth,
+db,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+sendPasswordResetEmail,
+onAuthStateChanged
+} from "./firebase.js";
+
+let currentUser = null;
+
+const loginPage = document.getElementById("login-page");
+const createPage = document.getElementById("create-page");
+const trackPage = document.getElementById("track-page");
+const fruitsPage = document.getElementById("fruits-page");
+
+function hideAllPages() {
+
+loginPage.style.display = "none";
+createPage.style.display = "none";
+trackPage.style.display = "none";
+fruitsPage.style.display = "none";
+
+}
+
+function showLoginPage(){
+
+hideAllPages();
+loginPage.style.display = "block";
+
+}
+
+function showHome(){
+
+hideAllPages();
+createPage.style.display = "block";
+
+}
+
+window.showLoginPage = showLoginPage;
+window.showHome = showHome;
+
+window.registerUser = async function(){
+
+const email = document.getElementById("register-email").value.trim();
+
+const password = document.getElementById("register-password").value;
+
+if(email==="" || password===""){
+
+alert("أكملي جميع البيانات");
+return;
+
+}
+
+try{
+
+await createUserWithEmailAndPassword(auth,email,password);
+
+alert("تم إنشاء الحساب بنجاح");
+
+}
+catch(error){
+
+alert(error.message);
+
+}
+
+};
+
+window.loginUser = async function(){
+
+const email=document.getElementById("login-email").value.trim();
+
+const password=document.getElementById("login-password").value;
+
+if(email==="" || password===""){
+
+alert("أدخلي البريد وكلمة المرور");
+return;
+
+}
+
+try{
+
+await signInWithEmailAndPassword(auth,email,password);
+
+}
+catch(error){
+
+alert("البريد الإلكتروني أو كلمة المرور غير صحيحة");
+
+}
+
+};
+
+window.logoutUser = async function(){
+
+await signOut(auth);
+
+};
+
+window.resetPassword = async function(){
+
+const email=document.getElementById("login-email").value.trim();
+
+if(email===""){
+
+alert("أدخلي البريد الإلكتروني أولاً");
+return;
+
+}
+
+try{
+
+await sendPasswordResetEmail(auth,email);
+
+alert("تم إرسال رابط إعادة تعيين كلمة المرور");
+
+}
+catch(error){
+
+alert(error.message);
+
+}
+
+};
+
+onAuthStateChanged(auth,(user)=>{
+
+if(user){
+
+currentUser=user;
+
+showHome();
+
+}else{
+
+currentUser=null;
+
+showLoginPage();
+
+}
+
+});
+import {
+doc,
+setDoc,
+getDoc
+} from "./firebase.js";
+
+let activePlan = null;
+
+async function loadPlan() {
+
+if (!currentUser) return;
+
+const planRef = doc(db, "plans", currentUser.uid);
+
+const planSnap = await getDoc(planRef);
+
+if (planSnap.exists()) {
+
+activePlan = planSnap.data();
+
+updateDashboard();
+
+}
+
+}
+
+window.createPlan = async function () {
+
+const userName = document.getElementById("user-name").value.trim();
+
+const planName = document.getElementById("plan-name").value.trim();
+
+const startDate = document.getElementById("start-date").value;
+
+const endDate = document.getElementById("end-date").value;
+
+const dailyTarget = document.getElementById("daily-target-input").value.trim();
+
+const totalPages = parseInt(document.getElementById("total-pages").value);
+
+if (
+userName === "" ||
+startDate === "" ||
+endDate === "" ||
+dailyTarget === "" ||
+isNaN(totalPages)
+) {
+
+alert("يرجى إكمال جميع البيانات");
+
+return;
+
+}
+
+activePlan = {
+
+userName,
+
+planName,
+
+startDate,
+
+endDate,
+
+dailyTarget,
+
+totalPages,
+
+completedPages:0,
+
+completedDays:0,
+
+createdAt:Date.now()
+
+};
+
+await setDoc(
+
+doc(db,"plans",currentUser.uid),
+
+activePlan
+
+);
+
+alert("تم إنشاء الخطة بنجاح");
+
+updateDashboard();
+
+};
+
+onAuthStateChanged(auth,(user)=>{
+
+if(user){
+
+currentUser=user;
+
+showHome();
+
+loadPlan();
+
+}else{
+
+currentUser=null;
+
+showLoginPage();
+
+}
+
+});
+function updateDashboard() {
+
+if (!activePlan) return;
+
+const planTitle = document.getElementById("plan-title");
+const progressText = document.getElementById("progress-text");
+const progressBar = document.getElementById("progress-bar");
+const completedPages = document.getElementById("completed-pages");
+const totalPages = document.getElementById("total-pages-view");
+const completedDays = document.getElementById("completed-days");
+const totalDays = document.getElementById("total-days");
+
+if(planTitle){
+planTitle.textContent =
+activePlan.planName || "خطة حفظ القرآن";
+}
+
+const progress =
+Math.round(
+(activePlan.completedPages / activePlan.totalPages) * 100
+);
+
+if(progressText){
+progressText.textContent = progress + "%";
+}
+
+if(progressBar){
+progressBar.style.width = progress + "%";
+}
+
+if(completedPages){
+completedPages.textContent =
+activePlan.completedPages;
+}
+
+if(totalPages){
+totalPages.textContent =
+activePlan.totalPages;
+}
+
+if(completedDays){
+completedDays.textContent =
+activePlan.completedDays;
+}
+
+if(totalDays){
+
+const start = new Date(activePlan.startDate);
+
+const end = new Date(activePlan.endDate);
+
+const days =
+Math.ceil(
+(end - start) /
+(1000 * 60 * 60 * 24)
+);
+
+totalDays.textContent = days;
+
+}
+
+}
+async function savePlan() {
+
+if (!currentUser || !activePlan) return;  
+
+try {  
+
+    await setDoc(  
+        doc(db, "plans", currentUser.uid),  
+        activePlan  
+    );  
+
+} catch (error) {  
+
+    console.error("خطأ أثناء حفظ الخطة:", error);  
+
+}
+
+}
+
+async function loadPlan() {
+
+if (!currentUser) return;  
+
+try {  
+
+    const planDoc = await getDoc(  
+        doc(db, "plans", currentUser.uid)  
+    );  
+
+    if (planDoc.exists()) {  
+
+        activePlan = planDoc.data();  
+
+    } else {  
+
+        activePlan = null;  
+
+    }  
+
+} catch (error) {  
+
+    console.error(error);  
+
+}
+
+}
+
+async function completeToday() {
+
+    if (!activePlan) return;
+
+    activePlan.completedDays++;
+
+    activePlan.completedPages++;
+
+    activePlan.lastCompletedDate = new Date().toISOString();
+
+    await savePlan();
+
+    updateDashboard();
+
+}
+function updateDashboard() {
+
+    if (!activePlan) return;
+
+    const planTitle = document.getElementById("plan-title");
+    const progressText = document.getElementById("progress-text");
+    const progressBar = document.getElementById("progress-bar");
+    const completedPages = document.getElementById("completed-pages");
+    const totalPages = document.getElementById("total-pages-view");
+    const completedDays = document.getElementById("completed-days");
+    const totalDays = document.getElementById("total-days");
+
+    if (planTitle) {
+        planTitle.textContent =
+            activePlan.planName || "خطة حفظ القرآن";
+    }
+
+    const progress = Math.round(
+        (activePlan.completedPages / activePlan.totalPages) * 100
+    );
+
+    if (progressText) {
+        progressText.textContent = progress + "%";
+    }
+
+    if (progressBar) {
+        progressBar.style.width = progress + "%";
+    }
+
+    if (completedPages) {
+        completedPages.textContent = activePlan.completedPages;
+    }
+
+    if (totalPages) {
+        totalPages.textContent = activePlan.totalPages;
+    }
+
+    if (completedDays) {
+        completedDays.textContent = activePlan.completedDays;
+    }
+
+    if (totalDays) {
+
+        const start = new Date(activePlan.startDate);
+        const end = new Date(activePlan.endDate);
+
+        totalDays.textContent = Math.ceil(
+            (end - start) / (1000 * 60 * 60 * 24)
+        );
+
+    }
+
+}
+
+async function savePlan() {
+
+    if (!currentUser || !activePlan) return;
+
+    try {
+
+        await setDoc(
+            doc(db, "plans", currentUser.uid),
+            activePlan
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+async function loadPlan() {
+
+    if (!currentUser) return;
+
+    try {
+
+        const planDoc = await getDoc(
+            doc(db, "plans", currentUser.uid)
+        );
+
+        if (planDoc.exists()) {
+
+            activePlan = planDoc.data();
+
+            checkMissedDays();
+
+            updateDashboard();
+
+        } else {
+
+            activePlan = null;
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+async function completeToday() {
+
+    if (!activePlan) return;
+
+    activePlan.completedDays++;
+    activePlan.completedPages++;
+    activePlan.lastCompletedDate = new Date().toISOString();
+
+    await savePlan();
+
+    updateDashboard();
+
+}
+
+function checkMissedDays() {
+
+    if (!activePlan) return;
+
+    if (!activePlan.lastCompletedDate) return;
+
+    const lastDate = new Date(activePlan.lastCompletedDate);
+    const today = new Date();
+
+    const diffDays = Math.floor(
+        (today - lastDate) / (1000 * 60 * 60 * 24)
+    );
+
+    if (diffDays >= 3) {
+
+        alert("انقطعت عن الخطة ثلاثة أيام، وتم إلغاء الخطة.");
+
+        activePlan = null;
+
+        updateDashboard();
+
+    }
+
+}
+
+
