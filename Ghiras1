@@ -1035,6 +1035,48 @@ const db = getFirestore(app);
 
 window.auth = auth;
 window.db = db;
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+window.registerUser = async function () {
+
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
+
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+
+    showCustomAlert("تم إنشاء الحساب بنجاح");
+
+  } catch (error) {
+
+    showCustomAlert(error.message);
+
+  }
+
+};
+
+window.loginUser = async function () {
+
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
+
+  try {
+
+    await signInWithEmailAndPassword(auth, email, password);
+
+    document.getElementById("login-screen").style.display = "none";
+    document.getElementById("app").style.display = "block";
+
+  } catch (error) {
+
+    showCustomAlert(error.message);
+
+  }
+
+};
 </script>
 </div>
 
