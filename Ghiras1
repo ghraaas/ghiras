@@ -1036,9 +1036,12 @@ const db = getFirestore(app);
 window.auth = auth;
 window.db = db;
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  deleteDoc
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 window.registerUser = async function () {
 
