@@ -565,6 +565,7 @@ display:none;
 </button>
 
 </div>  
+<div id="app">
     <header>  
         <h1>غِراس</h1>  
         <p>ازرع اليوم، واحصد غداً</p>  
@@ -1012,6 +1013,7 @@ display:none;
         closeModal();  
     }  
 </script>
+</div>
 
 </body>  
 </html>
