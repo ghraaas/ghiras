@@ -1,5 +1,4 @@
-<!DOCTYPE html>  
-<html lang="ar" dir="rtl">  
+<!DOCTYPE html>  <html lang="ar" dir="rtl">  
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
@@ -15,1061 +14,1067 @@
             --text-muted: #8E7C77;  
             --border-color: #F3EAE1;  
             --danger-color: #C0392B;  
-        }  
+        }  * {  
+        box-sizing: border-box;  
+        margin: 0;  
+        padding: 0;  
+        font-family: 'Tajawal', sans-serif;  
+    }  
 
-        * {  
-            box-sizing: border-box;  
-            margin: 0;  
-            padding: 0;  
-            font-family: 'Tajawal', sans-serif;  
-        }  
+    body {  
+        background-color: var(--bg-color);  
+        color: var(--text-color);  
+        min-height: 100vh;  
+        display: flex;  
+        flex-direction: column;  
+        align-items: center;  
+        padding-bottom: 70px;  
+    }  
 
-        body {  
-            background-color: var(--bg-color);  
-            color: var(--text-color);  
-            min-height: 100vh;  
-            display: flex;  
-            flex-direction: column;  
-            align-items: center;  
-            padding-bottom: 70px;  
-        }  
+    header {  
+        text-align: center;  
+        margin: 25px 0;  
+    }  
 
-        header {  
-            text-align: center;  
-            margin: 25px 0;  
-        }  
+    header h1 {  
+        font-size: 2.8rem;  
+        color: var(--primary-color);  
+        font-weight: 900;  
+        margin-bottom: 5px;  
+    }  
 
-        header h1 {  
-            font-size: 2.8rem;  
-            color: var(--primary-color);  
-            font-weight: 900;  
-            margin-bottom: 5px;  
-        }  
+    header p {  
+        font-size: 1.1rem;  
+        color: var(--text-muted);  
+        font-weight: 500;  
+    }  
 
-        header p {  
-            font-size: 1.1rem;  
-            color: var(--text-muted);  
-            font-weight: 500;  
-        }  
+    .container {  
+        width: 100%;  
+        max-width: 550px;  
+        padding: 0 20px;  
+        margin-bottom: 40px;  
+    }  
 
-        .container {  
-            width: 100%;  
-            max-width: 550px;  
-            padding: 0 20px;  
-            margin-bottom: 40px;  
-        }  
+    .page {  
+        display: none;  
+        background: var(--card-bg);  
+        border-radius: 24px;  
+        padding: 30px 24px;  
+        box-shadow: 0 10px 30px rgba(230, 126, 34, 0.05);  
+        border: 1px solid var(--border-color);  
+        animation: fadeIn 0.4s ease;  
+    }  
 
-        .page {  
-            display: none;  
-            background: var(--card-bg);  
-            border-radius: 24px;  
-            padding: 30px 24px;  
-            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.05);  
-            border: 1px solid var(--border-color);  
-            animation: fadeIn 0.4s ease;  
-        }  
+    .page.active {  
+        display: block;  
+    }  
 
-        .page.active {  
-            display: block;  
-        }  
+    @keyframes fadeIn {  
+        from { opacity: 0; transform: translateY(10px); }  
+        to { opacity: 1; transform: translateY(0); }  
+    }  
 
-        @keyframes fadeIn {  
-            from { opacity: 0; transform: translateY(10px); }  
-            to { opacity: 1; transform: translateY(0); }  
-        }  
+    h2.section-title {  
+        text-align: center;  
+        color: var(--primary-color);  
+        margin-bottom: 25px;  
+        font-size: 1.6rem;  
+        font-weight: 800;  
+    }  
 
-        h2.section-title {  
-            text-align: center;  
-            color: var(--primary-color);  
-            margin-bottom: 25px;  
-            font-size: 1.6rem;  
-            font-weight: 800;  
-        }  
+    .bottom-nav {  
+        position: fixed;  
+        bottom: 0;  
+        left: 0;  
+        right: 0;  
+        height: 70px;  
+        background: var(--card-bg);  
+        box-shadow: 0 -5px 25px rgba(0,0,0,0.05);  
+        display: flex;  
+        justify-content: space-around;  
+        align-items: center;  
+        border-top: 1px solid var(--border-color);  
+        z-index: 1000;  
+    }  
 
-        .bottom-nav {  
-            position: fixed;  
-            bottom: 0;  
-            left: 0;  
-            right: 0;  
-            height: 70px;  
-            background: var(--card-bg);  
-            box-shadow: 0 -5px 25px rgba(0,0,0,0.05);  
-            display: flex;  
-            justify-content: space-around;  
-            align-items: center;  
-            border-top: 1px solid var(--border-color);  
-            z-index: 1000;  
-        }  
+    .nav-item {  
+        display: flex;  
+        flex-direction: column;  
+        align-items: center;  
+        background: none;  
+        border: none;  
+        color: var(--text-muted);  
+        cursor: pointer;  
+        font-size: 1rem;  
+        font-weight: 700;  
+        transition: 0.3s;  
+        width: 33.33%;  
+        height: 100%;  
+        justify-content: center;  
+    }  
 
-        .nav-item {  
-            display: flex;  
-            flex-direction: column;  
-            align-items: center;  
-            background: none;  
-            border: none;  
-            color: var(--text-muted);  
-            cursor: pointer;  
-            font-size: 1rem;  
-            font-weight: 700;  
-            transition: 0.3s;  
-            width: 33.33%;  
-            height: 100%;  
-            justify-content: center;  
-        }  
+    .nav-item.active {  
+        color: var(--primary-color);  
+        border-top: 3px solid var(--primary-color);  
+    }  
 
-        .nav-item.active {  
-            color: var(--primary-color);  
-            border-top: 3px solid var(--primary-color);  
-        }  
+    .form-group {  
+        margin-bottom: 20px;  
+        width: 100%;  
+    }  
 
-        .form-group {  
-            margin-bottom: 20px;  
-            width: 100%;  
-        }  
+    .form-group label {  
+        display: block;  
+        margin-bottom: 8px;  
+        font-weight: 700;  
+        font-size: 0.95rem;  
+        color: var(--text-color);  
+    }  
 
-        .form-group label {  
-            display: block;  
-            margin-bottom: 8px;  
-            font-weight: 700;  
-            font-size: 0.95rem;  
-            color: var(--text-color);  
-        }  
+    .form-control {  
+        width: 100%;  
+        padding: 14px 18px;  
+        border-radius: 12px;  
+        border: 2px solid var(--border-color);  
+        background-color: #FFFDFB;  
+        font-size: 1rem;  
+        color: var(--text-color);  
+        transition: 0.3s;  
+        outline: none;  
+        text-align: center;  
+    }  
 
-        .form-control {  
-            width: 100%;  
-            padding: 14px 18px;  
-            border-radius: 12px;  
-            border: 2px solid var(--border-color);  
-            background-color: #FFFDFB;  
-            font-size: 1rem;  
-            color: var(--text-color);  
-            transition: 0.3s;  
-            outline: none;  
-            text-align: center;  
-        }  
+    /* حاوية التواريخ المطورة والمثبتة هندسياً لضمان التوازن الكامل وعدم الانحياز لليسار */  
+    .dates-flex-row {  
+        display: flex;  
+        flex-direction: row-reverse;  
+        justify-content: space-between;  
+        align-items: center;  
+        gap: 12px;  
+        width: 100%;  
+        margin-bottom: 20px;  
+    }  
 
-        .dates-flex-row {  
-            display: flex;  
-            flex-direction: row-reverse;  
-            justify-content: space-between;  
-            align-items: center;  
-            gap: 12px;  
-            width: 100%;  
-            margin-bottom: 20px;  
-        }  
+    .dates-flex-row .form-group {  
+        flex: 1;  
+        width: 50%;  
+        margin-bottom: 0;  
+    }  
 
-        .dates-flex-row .form-group {  
-            flex: 1;  
-            width: 50%;  
-            margin-bottom: 0;  
-        }  
+    .gender-selector {  
+        display: grid;  
+        grid-template-columns: 1fr 1fr;  
+        gap: 15px;  
+        margin-bottom: 20px;  
+    }  
 
-        .gender-selector {  
-            display: grid;  
-            grid-template-columns: 1fr 1fr;  
-            gap: 15px;  
-            margin-bottom: 20px;  
-        }  
+    .gender-option {  
+        border: 2px solid var(--border-color);  
+        border-radius: 12px;  
+        padding: 12px;  
+        text-align: center;  
+        cursor: pointer;  
+        font-weight: 700;  
+        transition: 0.3s;  
+        background-color: #FFFDFB;  
+    }  
 
-        .gender-option {  
-            border: 2px solid var(--border-color);  
-            border-radius: 12px;  
-            padding: 12px;  
-            text-align: center;  
-            cursor: pointer;  
-            font-weight: 700;  
-            transition: 0.3s;  
-            background-color: #FFFDFB;  
-        }  
+    .gender-option.selected {  
+        border-color: var(--primary-color);  
+        color: var(--primary-color);  
+        background-color: #FFF4EB;  
+    }  
 
-        .gender-option.selected {  
-            border-color: var(--primary-color);  
-            color: var(--primary-color);  
-            background-color: #FFF4EB;  
-        }  
+    .btn-primary {  
+        width: 100%;  
+        background: var(--primary-gradient);  
+        color: white;  
+        border: none;  
+        padding: 16px;  
+        border-radius: 16px;  
+        font-size: 1.1rem;  
+        font-weight: 800;  
+        cursor: pointer;  
+        transition: 0.3s;  
+        box-shadow: 0 6px 20px rgba(230, 126, 34, 0.25);  
+    }  
 
-        .btn-primary {  
-            width: 100%;  
-            background: var(--primary-gradient);  
-            color: white;  
-            border: none;  
-            padding: 16px;  
-            border-radius: 16px;  
-            font-size: 1.1rem;  
-            font-weight: 800;  
-            cursor: pointer;  
-            transition: 0.3s;  
-            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.25);  
-        }  
+    .action-buttons {  
+        display: grid;  
+        grid-template-columns: 1fr 1fr;  
+        gap: 12px;  
+        margin-top: 15px;  
+    }  
 
-        .action-buttons {  
-            display: grid;  
-            grid-template-columns: 1fr 1fr;  
-            gap: 12px;  
-            margin-top: 15px;  
-        }  
+    .btn-secondary {  
+        background-color: #ECEFF1;  
+        color: var(--text-color);  
+        border: none;  
+        padding: 12px;  
+        border-radius: 12px;  
+        font-weight: 700;  
+        cursor: pointer;  
+    }  
 
-        .btn-secondary {  
-            background-color: #ECEFF1;  
-            color: var(--text-color);  
-            border: none;  
-            padding: 12px;  
-            border-radius: 12px;  
-            font-weight: 700;  
-            cursor: pointer;  
-            width: 100%;  
-        }  
+    .btn-danger {  
+        background-color: #FDEDEC;  
+        color: var(--danger-color);  
+        border: 1px solid #FADBD8;  
+        padding: 12px;  
+        border-radius: 12px;  
+        font-weight: 700;  
+        cursor: pointer;  
+    }  
 
-        .btn-danger {  
-            background-color: #FDEDEC;  
-            color: var(--danger-color);  
-            border: 1px solid #FADBD8;  
-            padding: 12px;  
-            border-radius: 12px;  
-            font-weight: 700;  
-            cursor: pointer;  
-        }  
+    .grid-stats {  
+        display: grid;  
+        grid-template-columns: 1fr 1fr;  
+        gap: 15px;  
+        margin-bottom: 25px;  
+    }  
 
-        .grid-stats {  
-            display: grid;  
-            grid-template-columns: 1fr 1fr;  
-            gap: 15px;  
-            margin-bottom: 25px;  
-        }  
+    .stat-card {  
+        background: #FFFDFB;  
+        border: 1px solid var(--border-color);  
+        border-radius: 16px;  
+        padding: 15px;  
+        text-align: center;  
+    }  
 
-        .stat-card {  
-            background: #FFFDFB;  
-            border: 1px solid var(--border-color);  
-            border-radius: 16px;  
-            padding: 15px;  
-            text-align: center;  
-        }  
+    .stat-card .label {  
+        font-size: 0.85rem;  
+        color: var(--text-muted);  
+        margin-bottom: 5px;  
+        font-weight: 700;  
+    }  
 
-        .stat-card .label {  
-            font-size: 0.85rem;  
-            color: var(--text-muted);  
-            margin-bottom: 5px;  
-            font-weight: 700;  
-        }  
+    .stat-card .value {  
+        font-size: 1.4rem;  
+        font-weight: 900;  
+        color: var(--primary-color);  
+    }  
 
-        .stat-card .value {  
-            font-size: 1.4rem;  
-            font-weight: 900;  
-            color: var(--primary-color);  
-        }  
+    .progress-section {  
+        background: #FFFDFB;  
+        border: 1px solid var(--border-color);  
+        border-radius: 16px;  
+        padding: 20px;  
+        margin-bottom: 25px;  
+        text-align: center;  
+    }  
 
-        .progress-section {  
-            background: #FFFDFB;  
-            border: 1px solid var(--border-color);  
-            border-radius: 16px;  
-            padding: 20px;  
-            margin-bottom: 25px;  
-            text-align: center;  
-        }  
+    .progress-label {  
+        display: flex;  
+        justify-content: space-between;  
+        font-weight: 700;  
+        margin-bottom: 10px;  
+    }  
 
-        .progress-label {  
-            display: flex;  
-            justify-content: space-between;  
-            font-weight: 700;  
-            margin-bottom: 10px;  
-        }  
+    .progress-bar-container {  
+        width: 100%;  
+        height: 24px;  
+        background-color: #EFE8E1;  
+        border-radius: 12px;  
+        overflow: hidden;  
+        position: relative;  
+    }  
 
-        .progress-bar-container {  
-            width: 100%;  
-            height: 24px;  
-            background-color: #EFE8E1;  
-            border-radius: 12px;  
-            overflow: hidden;  
-            position: relative;  
-        }  
+    .progress-bar {  
+        height: 100%;  
+        width: 0%;  
+        background: var(--primary-gradient);  
+        border-radius: 12px;  
+        transition: width 0.8s ease;  
+        position: relative;  
+        overflow: hidden;  
+    }  
 
-        .progress-bar {  
-            height: 100%;  
-            width: 0%;  
-            background: var(--primary-gradient);  
-            border-radius: 12px;  
-            transition: width 0.8s ease;  
-        }  
+    .fruits-grid {  
+        display: grid;  
+        grid-template-columns: repeat(2, 1fr);  
+        gap: 15px;  
+    }  
 
-        .fruits-grid {  
-            display: grid;  
-            grid-template-columns: repeat(2, 1fr);  
-            gap: 15px;  
-        }  
+    .fruit-item {  
+        background: #FFFDFB;  
+        border: 2px dashed var(--border-color);  
+        border-radius: 20px;  
+        padding: 20px;  
+        text-align: center;  
+        cursor: pointer;  
+    }  
 
-        .fruit-item {  
-            background: #FFFDFB;  
-            border: 2px dashed var(--border-color);  
-            border-radius: 20px;  
-            padding: 20px;  
-            text-align: center;  
-            cursor: pointer;  
-        }  
+    .fruit-title {  
+        font-weight: 800;  
+        font-size: 1.1rem;  
+        color: var(--text-color);  
+        margin-bottom: 5px;  
+    }  
 
-        .fruit-title {  
-            font-weight: 800;  
-            font-size: 1.1rem;  
-            color: var(--text-color);  
-            margin-bottom: 5px;  
-        }  
+    .fruit-status {  
+        font-size: 0.85rem;  
+        color: var(--primary-color);  
+        font-weight: bold;  
+    }  
 
-        .fruit-status {  
-            font-size: 0.85rem;  
-            color: var(--primary-color);  
-            font-weight: bold;  
-        }  
+    .modal {  
+        display: none;  
+        position: fixed;  
+        top: 0; left: 0; right: 0; bottom: 0;  
+        background: rgba(0,0,0,0.6);  
+        z-index: 2000;  
+        justify-content: center;  
+        align-items: center;  
+        padding: 20px;  
+        backdrop-filter: blur(5px);  
+    }  
 
-        .modal {  
-            display: none;  
-            position: fixed;  
-            top: 0; left: 0; right: 0; bottom: 0;  
-            background: rgba(0,0,0,0.6);  
-            z-index: 2000;  
-            justify-content: center;  
-            align-items: center;  
-            padding: 20px;  
-            backdrop-filter: blur(5px);  
-        }  
+    .modal.active {  
+        display: flex;  
+    }  
 
-        .modal.active {  
-            display: flex;  
-        }  
+    .certificate-card {  
+        background: #FFFDF8;  
+        border: 10px double #F1C40F;  
+        border-radius: 16px;  
+        width: 100%;  
+        max-width: 450px;  
+        padding: 25px 20px;  
+        text-align: center;  
+        box-shadow: 0 15px 40px rgba(0,0,0,0.3);  
+        position: relative;  
+        animation: zoomIn 0.4s ease;  
+    }  
 
-        .certificate-card {  
-            background: #FFFDF8;  
-            border: 10px double #F1C40F;  
-            border-radius: 16px;  
-            width: 100%;  
-            max-width: 450px;  
-            padding: 25px 20px;  
-            text-align: center;  
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);  
-            position: relative;  
-            animation: zoomIn 0.4s ease;  
-        }  
+    @keyframes zoomIn {  
+        from { transform: scale(0.8); opacity: 0; }  
+        to { transform: scale(1); opacity: 1; }  
+    }  
 
-        @keyframes zoomIn {  
-            from { transform: scale(0.8); opacity: 0; }  
-            to { transform: scale(1); opacity: 1; }  
-        }  
+    .cert-header {  
+        color: var(--primary-color);  
+        font-size: 2.2rem;  
+        font-weight: 900;  
+        margin-bottom: 5px;  
+    }  
 
-        .cert-header {  
-            color: var(--primary-color);  
-            font-size: 2.2rem;  
-            font-weight: 900;  
-            margin-bottom: 5px;  
-        }  
+    .cert-sub {  
+        font-size: 0.95rem;  
+        color: #7F8C8D;  
+        margin-bottom: 5px;  
+    }  
 
-        .cert-sub {  
-            font-size: 0.95rem;  
-            color: #7F8C8D;  
-            margin-bottom: 5px;  
-        }  
+    .cert-name {  
+        font-size: 1.6rem;  
+        color: #2C3E50;  
+        font-weight: 800;  
+        margin: 5px 0;  
+        border-bottom: 2px solid var(--border-color);  
+        display: inline-block;  
+        padding-bottom: 2px;  
+    }  
 
-        .cert-name {  
-            font-size: 1.6rem;  
-            color: #2C3E50;  
-            font-weight: 800;  
-            margin: 5px 0;  
-            border-bottom: 2px solid var(--border-color);  
-            display: inline-block;  
-            padding-bottom: 2px;  
-        }  
+    .cert-desc {  
+        font-size: 1.05rem;  
+        color: var(--text-color);  
+        line-height: 1.4;  
+        margin-top: 5px;  
+    }  
 
-        .cert-desc {  
-            font-size: 1.05rem;  
-            color: var(--text-color);  
-            line-height: 1.4;  
-            margin-top: 5px;  
-        }  
+    .cert-blessing {  
+        font-size: 1rem;  
+        color: #E67E22;  
+        font-weight: 700;  
+        margin: 12px 10px;  
+        line-height: 1.5;  
+        background-color: #FFFDF0;  
+        padding: 8px;  
+        border-radius: 8px;  
+    }  
 
-        .cert-blessing {  
-            font-size: 1rem;  
-            color: #E67E22;  
-            font-weight: 700;  
-            margin: 12px 10px;  
-            line-height: 1.5;  
-            background-color: #FFFDF0;  
-            padding: 8px;  
-            border-radius: 8px;  
-        }  
+    .cert-meta {  
+        font-size: 0.85rem;  
+        color: var(--text-muted);  
+        margin-bottom: 3px;  
+    }  
 
-        .cert-meta {  
-            font-size: 0.85rem;  
-            color: var(--text-muted);  
-            margin-bottom: 3px;  
-        }  
+    .cert-footer-container {  
+        position: relative;  
+        width: 100%;  
+        height: 75px;  
+        margin-top: 5px;  
+    }  
 
-        .cert-footer-container {  
-            position: relative;  
-            width: 100%;  
-            height: 75px;  
-            margin-top: 5px;  
-        }  
+    /* ختم غراس المحدث بدون أيقونة وممركز بشكل ممتاز */  
+    .ghiras-real-seal {  
+        position: absolute;  
+        right: 15px;  
+        bottom: 5px;  
+        width: 75px;  
+        height: 75px;  
+        border: 3px double #E67E22;  
+        border-radius: 50%;  
+        background-color: rgba(230, 126, 34, 0.03);  
+        display: flex;  
+        flex-direction: column;  
+        align-items: center;  
+        justify-content: center;  
+        transform: rotate(-12deg);  
+        box-shadow: 0 0 4px rgba(230, 126, 34, 0.2);  
+    }  
 
-        .ghiras-real-seal {  
-            position: absolute;  
-            right: 15px;  
-            bottom: 5px;  
-            width: 75px;  
-            height: 75px;  
-            border: 3px double #E67E22;  
-            border-radius: 50%;  
-            background-color: rgba(230, 126, 34, 0.03);  
-            display: flex;  
-            flex-direction: column;  
-            align-items: center;  
-            justify-content: center;  
-            transform: rotate(-12deg);  
-            box-shadow: 0 0 4px rgba(230, 126, 34, 0.2);  
-        }  
+    .ghiras-real-seal .seal-text {  
+        font-size: 1.15rem;  
+        font-weight: 900;  
+        color: #E67E22;  
+        letter-spacing: 1px;  
+        text-shadow: 0.5px 0.5px 0px #FFF;  
+    }  
 
-        .ghiras-real-seal .seal-text {  
-            font-size: 1.15rem;  
-            font-weight: 900;  
-            color: #E67E22;  
-            letter-spacing: 1px;  
-        }  
+    .modal-close {  
+        position: absolute;  
+        top: 10px;  
+        right: 15px;  
+        background: none;  
+        border: none;  
+        font-size: 1.6rem;  
+        cursor: pointer;  
+        color: var(--text-muted);  
+    }  
 
-        .modal-close {  
-            position: absolute;  
-            top: 10px;  
-            right: 15px;  
-            background: none;  
-            border: none;  
-            font-size: 1.6rem;  
-            cursor: pointer;  
-            color: var(--text-muted);  
-        }  
+    .no-plan {  
+        text-align: center;  
+        padding: 40px 10px;  
+    }  
 
-        .no-plan {  
-            text-align: center;  
-            padding: 40px 10px;  
-        }  
+    .step-hidden {  
+        display: none;  
+    }  
 
-        .step-hidden {  
-            display: none;  
-        }  
+    /* تصميم النوافذ المنبثقة المخصصة (Custom Dialogs) لمنع ظهور اسم الموقع */  
+    .dialog-card {  
+        background: #FFFFFF;  
+        border-radius: 20px;  
+        width: 100%;  
+        max-width: 400px;  
+        padding: 24px;  
+        text-align: center;  
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);  
+        animation: zoomIn 0.3s ease;  
+        border: 1px solid var(--border-color);  
+    }  
 
-        .dialog-card {  
-            background: #FFFFFF;  
-            border-radius: 20px;  
-            width: 100%;  
-            max-width: 400px;  
-            padding: 24px;  
-            text-align: center;  
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);  
-            animation: zoomIn 0.3s ease;  
-            border: 1px solid var(--border-color);  
-        }  
+    .dialog-title {  
+        color: var(--primary-color);  
+        font-size: 1.3rem;  
+        font-weight: 800;  
+        margin-bottom: 12px;  
+    }  
 
-        .dialog-title {  
-            color: var(--primary-color);  
-            font-size: 1.3rem;  
-            font-weight: 800;  
-            margin-bottom: 12px;  
-        }  
+    .dialog-message {  
+        font-size: 1rem;  
+        color: var(--text-color);  
+        margin-bottom: 20px;  
+        line-height: 1.5;  
+    }  
 
-        .dialog-message {  
-            font-size: 1rem;  
-            color: var(--text-color);  
-            margin-bottom: 20px;  
-            line-height: 1.5;  
-        }  
+    .dialog-input {  
+        width: 100%;  
+        padding: 12px;  
+        border-radius: 10px;  
+        border: 2px solid var(--border-color);  
+        margin-bottom: 20px;  
+        outline: none;  
+        text-align: center;  
+        font-size: 1rem;  
+    }  
 
-        .dialog-input {  
-            width: 100%;  
-            padding: 12px;  
-            border-radius: 10px;  
-            border: 2px solid var(--border-color);  
-            margin-bottom: 20px;  
-            outline: none;  
-            text-align: center;  
-            font-size: 1rem;  
-        }  
+    .dialog-buttons {  
+        display: flex;  
+        gap: 10px;  
+        justify-content: center;  
+    }  
 
-        .dialog-buttons {  
-            display: flex;  
-            gap: 10px;  
-            justify-content: center;  
-        }  
+    .dialog-btn {  
+        flex: 1;  
+        padding: 12px;  
+        border-radius: 12px;  
+        font-weight: 700;  
+        cursor: pointer;  
+        border: none;  
+        font-size: 0.95rem;  
+    }  
 
-        .dialog-btn {  
-            flex: 1;  
-            padding: 12px;  
-            border-radius: 12px;  
-            font-weight: 700;  
-            cursor: pointer;  
-            border: none;  
-            font-size: 0.95rem;  
-        }  
+    .dialog-btn-confirm {  
+        background: var(--primary-gradient);  
+        color: white;  
+    }  
 
-        .dialog-btn-confirm {  
-            background: var(--primary-gradient);  
-            color: white;  
-        }  
+    .dialog-btn-cancel {  
+        background-color: #ECEFF1;  
+        color: var(--text-color);  
+    }  
+  #login-screen{
 
-        .dialog-btn-cancel {  
-            background-color: #ECEFF1;  
-            color: var(--text-color);  
-        }  
+max-width:500px;
+margin:40px auto;
+background:#fff;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
 
-        #login-screen {  
-            max-width: 450px;  
-            width: 90%;  
-            margin: 60px auto;  
-            background: #fff;  
-            padding: 30px;  
-            border-radius: 24px;  
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);  
-            border: 1px solid var(--border-color);  
-        }  
+#app{
+display:none;
+}
+</style>
 
-        #app {  
-            display: none;  
-            width: 100%;  
-            display: flex;  
-            flex-direction: column;  
-            align-items: center;  
-        }  
-    </style>  
 </head>  
 <body>  
+<div id="login-screen">  <h2 style="text-align:center;color:#E67E22;margin-bottom:20px;">  
+    تسجيل الدخول  
+</h2>  
 
-    <!-- شاشة تسجيل الدخول -->
-    <div id="login-screen">  
-        <h2 style="text-align:center;color:#E67E22;margin-bottom:20px;font-weight:900;">  
-            تسجيل الدخول إلى غِراس  
-        </h2>  
+<div class="form-group">  
+    <label>البريد الإلكتروني</label>  
+    <input  
+        type="email"  
+        id="login-email"  
+        class="form-control"  
+        placeholder="example@email.com">  
+</div>  
 
-        <div class="form-group">  
-            <label>البريد الإلكتروني</label>  
-            <input type="email" id="login-email" class="form-control" placeholder="example@email.com">  
-        </div>  
+<div class="form-group">  
+    <label>كلمة المرور</label>  
+    <input  
+        type="password"  
+        id="login-password"  
+        class="form-control"  
+        placeholder="********">  
+</div>  
 
-        <div class="form-group">  
-            <label>كلمة المرور</label>  
-            <input type="password" id="login-password" class="form-control" placeholder="********">  
-        </div>  
+<button class="btn-primary" onclick="loginUser()">  
+    تسجيل الدخول  
+</button>  
 
-        <button class="btn-primary" onclick="loginUser()" style="margin-bottom: 12px;">  
-            تسجيل الدخول  
-        </button>  
+<br><br>  
 
-        <button class="btn-secondary" onclick="registerUser()">  
-            إنشاء حساب جديد  
-        </button>  
-    </div>  
+<button class="btn-secondary" onclick="registerUser()">  
+    إنشاء حساب جديد  
+</button>
 
-    <!-- واجهة التطبيق الرئيسية (مخفية حتى يتم تسجيل الدخول) -->
-    <div id="app">  
-        <header>  
-            <h1>غِراس</h1>  
-            <p>ازرع اليوم، واحصد غداً</p>  
-        </header>  
-
-        <div class="container">  
-            <div id="page-create" class="page active">  
-                <h2 class="section-title">إنشاء خطة جديدة</h2>  
-                  
-                <div id="step-name">  
-                    <div class="form-group">  
-                        <label>الرجاء إدخال الاسم الثلاثي لاستخراج الشهادة</label>  
-                        <input type="text" id="user-name" class="form-control" placeholder="اكتب اسمك الثلاثي هنا">  
-                    </div>  
-                      
-                    <div class="form-group">  
-                        <label>الجنس</label>  
-                        <div class="gender-selector">  
-                            <div class="gender-option selected" id="gender-male" onclick="selectGender('male')">ذكر</div>  
-                            <div class="gender-option" id="gender-female" onclick="selectGender('female')">أنثى</div>  
-                        </div>  
-                    </div>  
-
-                    <button class="btn-primary" onclick="goToPlanStep()">التالي</button>  
-                </div>  
-
-                <div id="step-plan-details" class="step-hidden">  
-                    <div class="form-group">  
-                        <label>اسم الخطة (اختياري)</label>  
-                        <input type="text" id="plan-name" class="form-control" placeholder="مثال: جزآن في شهر / سورة البقرة">  
-                    </div>  
-
-                    <div class="dates-flex-row">  
-                        <div class="form-group">  
-                            <label>تاريخ البداية</label>  
-                            <input type="date" id="start-date" class="form-control">  
-                        </div>  
-                        <div class="form-group">  
-                            <label>تاريخ النهاية</label>  
-                            <input type="date" id="end-date" class="form-control">  
-                        </div>  
-                    </div>  
-
-                    <div class="form-group">  
-                        <label>المطلوب حفظه يومياً (مثال: وجه، وجهين)</label>  
-                        <input type="text" id="daily-target-input" class="form-control" placeholder="اكتب الورد اليومي المحدد هنا">  
-                    </div>  
-
-                    <div class="form-group">  
-                        <label>إجمالي عدد الأوجه في الخطة كاملة</label>  
-                        <input type="number" id="total-pages" class="form-control" placeholder="مثال: 60" min="1">  
-                    </div>  
-
-                    <button class="btn-primary" onclick="createNewPlan()">إنشاء الخطة</button>  
-                </div>  
-            </div>  
-
-            <div id="page-track" class="page">  
-                <h2 class="section-title">متابعة الخطة الحالية</h2>  
-                  
-                <div id="no-active-plan" class="no-plan">  
-                    <p>لا يوجد لديك خطة نشطة حالياً.</p>  
-                    <button class="btn-primary" onclick="switchTab('create')" style="margin-top: 15px;">ابدأ خطة جديدة</button>  
-                </div>  
-
-                <div id="active-plan-details" style="display: none;">  
-                    <div class="grid-stats">  
-                        <div class="stat-card">  
-                            <div class="label">إجمالي الأيام</div>  
-                            <div class="value" id="stat-total-days">0</div>  
-                        </div>  
-                        <div class="stat-card">  
-                            <div class="label">اليوم الحالي</div>  
-                            <div class="value" id="stat-current-day">0</div>  
-                        </div>  
-                    </div>  
-
-                    <div class="grid-stats">  
-                        <div class="stat-card">  
-                            <div class="label">المطلوب حفظه يومياً</div>  
-                            <div class="value" id="stat-daily-target">0</div>  
-                        </div>  
-                        <div class="stat-card">  
-                            <div class="label">ما تم إنجازه</div>  
-                            <div class="value" id="stat-completed-days">0 يوم</div>  
-                        </div>  
-                    </div>  
-
-                    <div class="progress-section">  
-                        <div class="progress-label">  
-                            <span>التقدم الكلي</span>  
-                            <span id="progress-percentage">0%</span>  
-                        </div>  
-                        <div class="progress-bar-container">  
-                            <div class="progress-bar" id="progress-bar-fill"></div>  
-                        </div>  
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 15px;">كل خطوة تقربك من كلام الله</p>  
-                    </div>  
-
-                    <button class="btn-primary" id="btn-complete-day" onclick="completeToday()">تم الإنجاز</button>  
-
-                    <div class="action-buttons">  
-                        <button class="btn-secondary" onclick="editCurrentPlan()" style="padding: 12px; border-radius: 12px; font-weight: 700; border: none; cursor: pointer;">تعديل الخطة</button>  
-                        <button class="btn-danger" onclick="deleteCurrentPlan()">حذف الخطة</button>  
-                    </div>  
-                </div>  
-            </div>  
-
-            <div id="page-fruits" class="page">  
-                <h2 class="section-title">ثمار غراس</h2>  
-                <p style="text-align: center; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 25px;">سجل الخطط المكتملة والمستندات المحفوظة</p>  
-                  
-                <div class="fruits-grid" id="fruits-container"></div>  
-            </div>  
-        </div>  
-
-        <nav class="bottom-nav">  
-            <button class="nav-item active" onclick="switchTab('create')" id="nav-create">خطة جديدة</button>  
-            <button class="nav-item" onclick="switchTab('track')" id="nav-track">متابعة غراسي</button>  
-            <button class="nav-item" onclick="switchTab('fruits')" id="nav-fruits">ثمار غراس</button>  
-        </nav>  
-    </div>  
-
-    <!-- النوافذ المنبثقة (Modals) -->
-    <div class="modal" id="cert-modal">  
-        <div class="certificate-card">  
-            <button class="modal-close" onclick="closeModal()">×</button>  
-            <div class="cert-header">ثمرة غِراس</div>  
-            <div class="cert-sub">تُمنح هذه الشهادة إلى</div>  
-            <div class="cert-name" id="cert-user-name">الاسم الثلاثي</div>  
-              
-            <div class="cert-desc">  
-                وذلك <span id="cert-gender-text">لإكماله</span> خطة حفظ القرآن بنجاح والتزام:<br>  
-                <strong id="cert-plan-title" style="color: var(--primary-color);">اسم الخطة</strong>  
+</div>  
+<div id="app">
+    <header>  
+        <h1>غِراس</h1>  
+        <p>ازرع اليوم، واحصد غداً</p>  
+    </header>  <div class="container">  
+      
+    <div id="page-create" class="page active">  
+        <h2 class="section-title">إنشاء خطة جديدة</h2>  
+          
+        <div id="step-name">  
+            <div class="form-group">  
+                <label>الرجاء إدخال الاسم الثلاثي لاستخراج الشهادة</label>  
+                <input type="text" id="user-name" class="form-control" placeholder="اكتب اسمك الثلاثي هنا">  
             </div>  
               
-            <div class="cert-blessing">  
-                مباااارك لك ، زادك الله من واسع فضله وثبت الآي ف صدرك ونفع بك وأثابك  
-            </div>  
-
-            <div class="cert-meta">تاريخ الإنجاز: <span id="cert-date"></span></div>  
-            <div class="cert-meta" style="margin-bottom: 10px;">مدة الخطة: <span id="cert-duration">0</span> يوم | عدد الأوجه: <span id="cert-pages-count">0</span> وجه</div>  
-              
-            <button class="btn-primary" onclick="downloadCertificate()">تحميل الشهادة</button>  
-
-            <div class="cert-footer-container">  
-                <div class="ghiras-real-seal">  
-                    <div class="seal-text">غراس</div>  
+            <div class="form-group">  
+                <label>الجنس</label>  
+                <div class="gender-selector">  
+                    <div class="gender-option selected" id="gender-male" onclick="selectGender('male')">ذكر</div>  
+                    <div class="gender-option" id="gender-female" onclick="selectGender('female')">أنثى</div>  
                 </div>  
             </div>  
+
+            <button class="btn-primary" onclick="goToPlanStep()">التالي</button>  
+        </div>  
+
+        <div id="step-plan-details" class="step-hidden">  
+            <div class="form-group">  
+                <label>اسم الخطة (اختياري)</label>  
+                <input type="text" id="plan-name" class="form-control" placeholder="مثال: جزآن في شهر / سورة البقرة">  
+            </div>  
+
+            <div class="dates-flex-row">  
+                <div class="form-group">  
+                    <label>تاريخ البداية</label>  
+                    <input type="date" id="start-date" class="form-control">  
+                </div>  
+                <div class="form-group">  
+                    <label>تاريخ النهاية</label>  
+                    <input type="date" id="end-date" class="form-control">  
+                </div>  
+            </div>  
+
+            <div class="form-group">  
+                <label>المطلوب حفظه يومياً (مثال: وجه، وجهين، نصف وجه)</label>  
+                <input type="text" id="daily-target-input" class="form-control" placeholder="اكتب الورد اليومي المحدد هنا">  
+            </div>  
+
+            <div class="form-group">  
+                <label>إجمالي عدد الأوجه في الخطة كاملة</label>  
+                <input type="number" id="total-pages" class="form-control" placeholder="مثال: 60" min="1">  
+            </div>  
+
+            <button class="btn-primary" onclick="createNewPlan()">إنشاء الخطة</button>  
         </div>  
     </div>  
 
-    <div id="custom-alert" class="modal">  
-        <div class="dialog-card">  
-            <div class="dialog-title">غِراس</div>  
-            <div id="custom-alert-msg" class="dialog-message">رسالة التنبيه هنا</div>  
-            <div class="dialog-buttons">  
-                <button class="dialog-btn dialog-btn-confirm" onclick="closeCustomAlert()">حسنًا</button>  
+    <div id="page-track" class="page">  
+        <h2 class="section-title">متابعة الخطة الحالية</h2>  
+          
+        <div id="no-active-plan" class="no-plan">  
+            <p>لا يوجد لديك خطة نشطة حالياً.</p>  
+            <button class="btn-primary" onclick="switchTab('create')">ابدأ خطة جديدة</button>  
+        </div>  
+
+        <div id="active-plan-details" style="display: none;">  
+            <div class="grid-stats">  
+                <div class="stat-card">  
+                    <div class="label">إجمالي الأيام</div>  
+                    <div class="value" id="stat-total-days">0</div>  
+                </div>  
+                <div class="stat-card">  
+                    <div class="label">اليوم الحالي</div>  
+                    <div class="value" id="stat-current-day">0</div>  
+                </div>  
+            </div>  
+
+            <div class="grid-stats">  
+                <div class="stat-card">  
+                    <div class="label">المطلوب حفظه يومياً</div>  
+                    <div class="value" id="stat-daily-target">0</div>  
+                </div>  
+                <div class="stat-card">  
+                    <div class="label">ما تم إنجازه</div>  
+                    <div class="value" id="stat-completed-days">0 يوم</div>  
+                </div>  
+            </div>  
+
+            <div class="progress-section">  
+                <div class="progress-label">  
+                    <span>التقدم الكلي</span>  
+                    <span id="progress-percentage">0%</span>  
+                </div>  
+                <div class="progress-bar-container">  
+                    <div class="progress-bar" id="progress-bar-fill"></div>  
+                </div>  
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 15px;">كل خطوة تقربك من كلام الله</p>  
+            </div>  
+
+            <button class="btn-primary" id="btn-complete-day" onclick="completeToday()">تم الإنجاز</button>  
+
+            <div class="action-buttons">  
+                <button class="btn-secondary" onclick="editCurrentPlan()">تعديل الخطة</button>  
+                <button class="btn-danger" onclick="deleteCurrentPlan()">حذف الخطة</button>  
             </div>  
         </div>  
     </div>  
 
-    <div id="custom-confirm" class="modal">  
-        <div class="dialog-card">  
-            <div class="dialog-title">تأكيد الإجراء</div>  
-            <div id="custom-confirm-msg" class="dialog-message">هل أنت متأكد؟</div>  
-            <div class="dialog-buttons">  
-                <button class="dialog-btn dialog-btn-confirm" id="custom-confirm-yes-btn">نعم</button>  
-                <button class="dialog-btn dialog-btn-cancel" onclick="closeCustomConfirm()">إلغاء</button>  
+    <div id="page-fruits" class="page">  
+        <h2 class="section-title">ثمار غراس</h2>  
+        <p style="text-align: center; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 25px;">سجل الخطط المكتملة والمستندات المحفوظة</p>  
+          
+        <div class="fruits-grid" id="fruits-container"></div>  
+    </div>  
+
+</div>  
+
+<nav class="bottom-nav">  
+    <button class="nav-item active" onclick="switchTab('create')" id="nav-create">خطة جديدة</button>  
+    <button class="nav-item" onclick="switchTab('track')" id="nav-track">متابعة غراسي</button>  
+    <button class="nav-item" onclick="switchTab('fruits')" id="nav-fruits">ثمار غراس</button>  
+</nav>  
+
+<div class="modal" id="cert-modal">  
+    <div class="certificate-card">  
+        <button class="modal-close" onclick="closeModal()">×</button>  
+        <div class="cert-header">ثمرة غِراس</div>  
+        <div class="cert-sub">تُمنح هذه الشهادة إلى</div>  
+        <div class="cert-name" id="cert-user-name">الاسم الثلاثي</div>  
+          
+        <div class="cert-desc">  
+            وذلك <span id="cert-gender-text">لإكماله</span> خطة حفظ القرآن بنجاح والتزام:<br>  
+            <strong id="cert-plan-title" style="color: var(--primary-color);">اسم الخطة</strong>  
+        </div>  
+          
+        <div class="cert-blessing">  
+            مباااارك لك ، زادك الله من واسع فضله وثبت الآي ف صدرك ونفع بك وأثابك  
+        </div>  
+
+        <div class="cert-meta">تاريخ الإنجاز: <span id="cert-date"></span></div>  
+        <div class="cert-meta" style="margin-bottom: 10px;">مدة الخطة: <span id="cert-duration">0</span> يوم | عدد الأوجه: <span id="cert-pages-count">0</span> وجه</div>  
+          
+        <button class="btn-primary" onclick="downloadCertificate()">تحميل الشهادة</button>  
+
+        <div class="cert-footer-container">  
+            <div class="ghiras-real-seal">  
+                <div class="seal-text">غراس</div>  
             </div>  
         </div>  
     </div>  
+</div>  
 
-    <div id="custom-prompt" class="modal">  
-        <div class="dialog-card">  
-            <div class="dialog-title" id="custom-prompt-title">إدخال بيانات</div>  
-            <div id="custom-prompt-msg" class="dialog-message">الرجاء إدخال القيمة:</div>  
-            <input type="text" id="custom-prompt-input" class="dialog-input">  
-            <div class="dialog-buttons">  
-                <button class="dialog-btn dialog-btn-confirm" id="custom-prompt-save-btn">حفظ</button>  
-                <button class="dialog-btn dialog-btn-cancel" onclick="closeCustomPrompt()">إلغاء</button>  
-            </div>  
+<div id="custom-alert" class="modal">  
+    <div class="dialog-card">  
+        <div class="dialog-title">غِراس</div>  
+        <div id="custom-alert-msg" class="dialog-message">رسالة التنبيه هنا</div>  
+        <div class="dialog-buttons">  
+            <button class="dialog-btn dialog-btn-confirm" onclick="closeCustomAlert()">حسنًا</button>  
         </div>  
     </div>  
+</div>  
 
-    <!-- السكربتات البرمجية -->
-    <script>  
-        document.getElementById('start-date').valueAsDate = new Date();  
-        const nextMonth = new Date();  
-        nextMonth.setMonth(nextMonth.getMonth() + 1);  
-        document.getElementById('end-date').valueAsDate = nextMonth;  
+<div id="custom-confirm" class="modal">  
+    <div class="dialog-card">  
+        <div class="dialog-title">تأكيد الإجراء</div>  
+        <div id="custom-confirm-msg" class="dialog-message">هل أنت متأكد؟</div>  
+        <div class="dialog-buttons">  
+            <button class="dialog-btn dialog-btn-confirm" id="custom-confirm-yes-btn">نعم</button>  
+            <button class="dialog-btn dialog-btn-cancel" onclick="closeCustomConfirm()">إلغاء</button>  
+        </div>  
+    </div>  
+</div>  
 
-        let activePlan = JSON.parse(localStorage.getItem('ghiras_active_plan')) || null;  
-        let completedPlans = JSON.parse(localStorage.getItem('ghiras_completed_plans')) || [];  
-        let selectedGender = 'male';  
+<div id="custom-prompt" class="modal">  
+    <div class="dialog-card">  
+        <div class="dialog-title" id="custom-prompt-title">إدخال بيانات</div>  
+        <div id="custom-prompt-msg" class="dialog-message">الرجاء إدخال القيمة:</div>  
+        <input type="text" id="custom-prompt-input" class="dialog-input">  
+        <div class="dialog-buttons">  
+            <button class="dialog-btn dialog-btn-confirm" id="custom-prompt-save-btn">حفظ</button>  
+            <button class="dialog-btn dialog-btn-cancel" onclick="closeCustomPrompt()">إلغاء</button>  
+        </div>  
+    </div>  
+</div>  
 
-        let confirmResolve = null;  
-        let promptResolve = null;  
+<script>  
+    document.getElementById('start-date').valueAsDate = new Date();  
+    const nextMonth = new Date();  
+    nextMonth.setMonth(nextMonth.getMonth() + 1);  
+    document.getElementById('end-date').valueAsDate = nextMonth;  
 
-        function showCustomAlert(message) {  
-            document.getElementById('custom-alert-msg').innerText = message;  
-            document.getElementById('custom-alert').classList.add('active');  
-        }  
+    let activePlan = JSON.parse(localStorage.getItem('ghiras_active_plan')) || null;  
+    let completedPlans = JSON.parse(localStorage.getItem('ghiras_completed_plans')) || [];  
+    let selectedGender = 'male';  
 
-        function closeCustomAlert() {  
-            document.getElementById('custom-alert').classList.remove('active');  
-        }  
+    // --- دوال النوافذ المخصصة البديلة لـ alert, confirm, prompt ---  
+    let confirmResolve = null;  
+    let promptResolve = null;  
 
-        function showCustomConfirm(message) {  
-            return new Promise((resolve) => {  
-                document.getElementById('custom-confirm-msg').innerText = message;  
-                document.getElementById('custom-confirm').classList.add('active');  
-                  
-                document.getElementById('custom-confirm-yes-btn').onclick = function() {  
-                    document.getElementById('custom-confirm').classList.remove('active');  
-                    resolve(true);  
-                };  
-                confirmResolve = resolve;  
-            });  
-        }  
+    function showCustomAlert(message) {  
+        document.getElementById('custom-alert-msg').innerText = message;  
+        document.getElementById('custom-alert').classList.add('active');  
+    }  
 
-        function closeCustomConfirm() {  
-            document.getElementById('custom-confirm').classList.remove('active');  
-            if (confirmResolve) confirmResolve(false);  
-        }  
+    function closeCustomAlert() {  
+        document.getElementById('custom-alert').classList.remove('active');  
+    }  
 
-        function showCustomPrompt(title, message, defaultValue = "") {  
-            return new Promise((resolve) => {  
-                document.getElementById('custom-prompt-title').innerText = title;  
-                document.getElementById('custom-prompt-msg').innerText = message;  
-                document.getElementById('custom-prompt-input').value = defaultValue;  
-                document.getElementById('custom-prompt').classList.add('active');  
-                  
-                document.getElementById('custom-prompt-save-btn').onclick = function() {  
-                    const value = document.getElementById('custom-prompt-input').value;  
-                    document.getElementById('custom-prompt').classList.remove('active');  
-                    resolve(value);  
-                };  
-                promptResolve = resolve;  
-            });  
-        }  
-
-        function closeCustomPrompt() {  
-            document.getElementById('custom-prompt').classList.remove('active');  
-            if (promptResolve) promptResolve(null);  
-        }  
-
-        function selectGender(gender) {  
-            selectedGender = gender;  
-            document.getElementById('gender-male').classList.remove('selected');  
-            document.getElementById('gender-female').classList.remove('selected');  
-            document.getElementById(`gender-${gender}`).classList.add('selected');  
-        }  
-
-        function goToPlanStep() {  
-            const userName = document.getElementById('user-name').value.trim();  
-            if (!userName || userName.split(' ').filter(w => w).length < 3) {  
-                showCustomAlert("الرجاء إدخال الاسم الثلاثي كاملاً للمتابعة.");  
-                return;  
-            }  
-            document.getElementById('step-name').classList.add('step-hidden');  
-            document.getElementById('step-plan-details').classList.remove('step-hidden');  
-        }  
-
-        function switchTab(tabId) {  
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));  
-            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));  
-
-            document.getElementById(`page-${tabId}`).classList.add('active');  
-            document.getElementById(`nav-${tabId}`).classList.add('active');  
-
-            if (tabId === 'track') {  
-                renderTrackPage();  
-            } else if (tabId === 'fruits') {  
-                renderFruitsPage();  
-            }  
-        }  
-
-        function createNewPlan() {  
-            const userName = document.getElementById('user-name').value.trim();  
-            const planName = document.getElementById('plan-name').value.trim() || "خطة حفظ القرآن";  
-            const startDate = document.getElementById('start-date').value;  
-            const endDate = document.getElementById('end-date').value;  
-            const dailyTarget = document.getElementById('daily-target-input').value.trim() || "1 وجه";  
-            const totalPages = parseInt(document.getElementById('total-pages').value);  
-
-            if (!totalPages || totalPages <= 0) {  
-                showCustomAlert("يرجى تحديد عدد الأوجه المطلوبة.");  
-                return;  
-            }  
-
-            const start = new Date(startDate);  
-            const end = new Date(endDate);  
-            const diffTime = Math.abs(end - start);  
-            const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1;  
-
-            activePlan = {  
-                userName: userName,  
-                gender: selectedGender,   
-                name: planName,  
-                startDate: startDate,  
-                endDate: endDate,  
-                totalDays: totalDays,  
-                currentDay: 1,  
-                completedDays: 0,  
-                totalPages: totalPages,  
-                dailyTarget: dailyTarget  
+    function showCustomConfirm(message) {  
+        return new Promise((resolve) => {  
+            document.getElementById('custom-confirm-msg').innerText = message;  
+            document.getElementById('custom-confirm').classList.add('active');  
+              
+            document.getElementById('custom-confirm-yes-btn').onclick = function() {  
+                document.getElementById('custom-confirm').classList.remove('active');  
+                resolve(true);  
             };  
+            confirmResolve = resolve;  
+        });  
+    }  
 
-            localStorage.setItem('ghiras_active_plan', JSON.stringify(activePlan));  
+    function closeCustomConfirm() {  
+        document.getElementById('custom-confirm').classList.remove('active');  
+        if (confirmResolve) confirmResolve(false);  
+    }  
+
+    function showCustomPrompt(title, message, defaultValue = "") {  
+        return new Promise((resolve) => {  
+            document.getElementById('custom-prompt-title').innerText = title;  
+            document.getElementById('custom-prompt-msg').innerText = message;  
+            document.getElementById('custom-prompt-input').value = defaultValue;  
+            document.getElementById('custom-prompt').classList.add('active');  
               
-            document.getElementById('user-name').value = '';  
-            document.getElementById('plan-name').value = '';  
-            document.getElementById('daily-target-input').value = '';  
-            document.getElementById('total-pages').value = '';  
-            document.getElementById('step-plan-details').classList.add('step-hidden');  
-            document.getElementById('step-name').classList.remove('step-hidden');  
+            document.getElementById('custom-prompt-save-btn').onclick = function() {  
+                const value = document.getElementById('custom-prompt-input').value;  
+                document.getElementById('custom-prompt').classList.remove('active');  
+                resolve(value);  
+            };  
+            promptResolve = resolve;  
+        });  
+    }  
 
-            showCustomAlert("تم إنشاء خطتك الجديدة بنجاح.");  
-            switchTab('track');  
+    function closeCustomPrompt() {  
+        document.getElementById('custom-prompt').classList.remove('active');  
+        if (promptResolve) promptResolve(null);  
+    }  
+    // -----------------------------------------------------------------  
+
+    function selectGender(gender) {  
+        selectedGender = gender;  
+        document.getElementById('gender-male').classList.remove('selected');  
+        document.getElementById('gender-female').classList.remove('selected');  
+        document.getElementById(`gender-${gender}`).classList.add('selected');  
+    }  
+
+    function goToPlanStep() {  
+        const userName = document.getElementById('user-name').value.trim();  
+        if (!userName || userName.split(' ').filter(w => w).length < 3) {  
+            showCustomAlert("الرجاء إدخال الاسم الثلاثي كاملاً للمتابعة.");  
+            return;  
+        }  
+        document.getElementById('step-name').classList.add('step-hidden');  
+        document.getElementById('step-plan-details').classList.remove('step-hidden');  
+    }  
+
+    function switchTab(tabId) {  
+        document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));  
+        document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));  
+
+        document.getElementById(`page-${tabId}`).classList.add('active');  
+        document.getElementById(`nav-${tabId}`).classList.add('active');  
+
+        if (tabId === 'track') {  
+            renderTrackPage();  
+        } else if (tabId === 'fruits') {  
+            renderFruitsPage();  
+        }  
+    }  
+
+    function createNewPlan() {  
+        const userName = document.getElementById('user-name').value.trim();  
+        const planName = document.getElementById('plan-name').value.trim() || "خطة حفظ القرآن";  
+        const startDate = document.getElementById('start-date').value;  
+        const endDate = document.getElementById('end-date').value;  
+        const dailyTarget = document.getElementById('daily-target-input').value.trim() || "1 وجه";  
+        const totalPages = parseInt(document.getElementById('total-pages').value);  
+
+        if (!totalPages || totalPages <= 0) {  
+            showCustomAlert("يرجى تحديد عدد الأوجه المطلوبة.");  
+            return;  
         }  
 
-        function renderTrackPage() {  
-            const noPlanDiv = document.getElementById('no-active-plan');  
-            const detailsDiv = document.getElementById('active-plan-details');  
+        const start = new Date(startDate);  
+        const end = new Date(endDate);  
+        const diffTime = Math.abs(end - start);  
+        const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1;  
 
-            if (!activePlan) {  
-                noPlanDiv.style.display = 'block';  
-                detailsDiv.style.display = 'none';  
-            } else {  
-                noPlanDiv.style.display = 'none';  
-                detailsDiv.style.display = 'block';  
+        activePlan = {  
+            userName: userName,  
+            gender: selectedGender,   
+            name: planName,  
+            startDate: startDate,  
+            endDate: endDate,  
+            totalDays: totalDays,  
+            currentDay: 1,  
+            completedDays: 0,  
+            totalPages: totalPages,  
+            dailyTarget: dailyTarget  
+        };  
 
-                document.getElementById('stat-total-days').innerText = activePlan.totalDays;  
-                document.getElementById('stat-current-day').innerText = `${activePlan.currentDay} من ${activePlan.totalDays}`;  
-                document.getElementById('stat-daily-target').innerText = activePlan.dailyTarget;  
-                document.getElementById('stat-completed-days').innerText = `${activePlan.completedDays} يوم`;  
+        localStorage.setItem('ghiras_active_plan', JSON.stringify(activePlan));  
+          
+        document.getElementById('user-name').value = '';  
+        document.getElementById('plan-name').value = '';  
+        document.getElementById('daily-target-input').value = '';  
+        document.getElementById('total-pages').value = '';  
+        document.getElementById('step-plan-details').classList.add('step-hidden');  
+        document.getElementById('step-name').classList.remove('step-hidden');  
 
-                const progress = Math.min(((activePlan.completedDays / activePlan.totalDays) * 100), 100).toFixed(0);  
-                document.getElementById('progress-bar-fill').style.width = `${progress}%`;  
-                document.getElementById('progress-percentage').innerText = `${progress}%`;  
+        showCustomAlert("تم إنشاء خطتك الجديدة بنجاح.");  
+        switchTab('track');  
+    }  
+
+    function renderTrackPage() {  
+        const noPlanDiv = document.getElementById('no-active-plan');  
+        const detailsDiv = document.getElementById('active-plan-details');  
+
+        if (!activePlan) {  
+            noPlanDiv.style.display = 'block';  
+            detailsDiv.style.display = 'none';  
+        } else {  
+            noPlanDiv.style.display = 'none';  
+            detailsDiv.style.display = 'block';  
+
+            document.getElementById('stat-total-days').innerText = activePlan.totalDays;  
+            document.getElementById('stat-current-day').innerText = `${activePlan.currentDay} من ${activePlan.totalDays}`;  
+            document.getElementById('stat-daily-target').innerText = activePlan.dailyTarget;  
+            document.getElementById('stat-completed-days').innerText = `${activePlan.completedDays} يوم`;  
+
+            const progress = Math.min(((activePlan.completedDays / activePlan.totalDays) * 100), 100).toFixed(0);  
+            document.getElementById('progress-bar-fill').style.width = `${progress}%`;  
+            document.getElementById('progress-percentage').innerText = `${progress}%`;  
+        }  
+    }  
+
+    function completeToday() {  
+        if (!activePlan) return;  
+
+        activePlan.completedDays += 1;  
+
+        if (activePlan.completedDays >= activePlan.totalDays) {  
+            activePlan.completionDate = new Date().toLocaleDateString('ar-EG');  
+            completedPlans.push(activePlan);  
+            localStorage.setItem('ghiras_completed_plans', JSON.stringify(completedPlans));  
+              
+            showCertificate(activePlan);  
+            activePlan = null;  
+            localStorage.removeItem('ghiras_active_plan');  
+        } else {  
+            activePlan.currentDay += 1;  
+            localStorage.setItem('ghiras_active_plan', JSON.stringify(activePlan));  
+            showCustomAlert("تم تسجيل الإنجاز بنجاح.");  
+        }  
+        renderTrackPage();  
+    }  
+
+    async function editCurrentPlan() {  
+        if (!activePlan) return;  
+          
+        const newTarget = await showCustomPrompt("تعديل الورد اليومي", "أدخل الورد اليومي الجديد:", activePlan.dailyTarget);  
+        if (newTarget !== null && newTarget.trim() !== "") {  
+            activePlan.dailyTarget = newTarget.trim();  
+        }  
+
+        const newTotalPages = await showCustomPrompt("تعديل إجمالي الأوجه", "أدخل إجمالي عدد الأوجه الجديد:", activePlan.totalPages);  
+        if (newTotalPages !== null) {  
+            const parsedPages = parseInt(newTotalPages);  
+            if (!isNaN(parsedPages) && parsedPages > 0) {  
+                activePlan.totalPages = parsedPages;  
             }  
         }  
 
-        function completeToday() {  
-            if (!activePlan) return;  
+        localStorage.setItem('ghiras_active_plan', JSON.stringify(activePlan));  
+        showCustomAlert("تم تعديل الخطة بنجاح.");  
+        renderTrackPage();  
+    }  
 
-            activePlan.completedDays += 1;  
+    async function deleteCurrentPlan() {  
+        if (!activePlan) return;  
 
-            if (activePlan.completedDays >= activePlan.totalDays) {  
-                activePlan.completionDate = new Date().toLocaleDateString('ar-EG');  
-                completedPlans.push(activePlan);  
-                localStorage.setItem('ghiras_completed_plans', JSON.stringify(completedPlans));  
-                  
-                showCertificate(activePlan);  
-                activePlan = null;  
-                localStorage.removeItem('ghiras_active_plan');  
-            } else {  
-                activePlan.currentDay += 1;  
-                localStorage.setItem('ghiras_active_plan', JSON.stringify(activePlan));  
-                showCustomAlert("تم تسجيل الإنجاز بنجاح.");  
-            }  
+        const confirmDelete = await showCustomConfirm("هل أنت متأكد من رغبتك في حذف الخطة الحالية والبدء من جديد؟");  
+        if (confirmDelete) {  
+            activePlan = null;  
+            localStorage.removeItem('ghiras_active_plan');  
+            showCustomAlert("تم حذف الخطة بنجاح.");  
             renderTrackPage();  
         }  
+    }  
 
-        async function editCurrentPlan() {  
-            if (!activePlan) return;  
+    function showCertificate(plan) {  
+        document.getElementById('cert-user-name').innerText = plan.userName;  
+        document.getElementById('cert-plan-title').innerText = plan.name;  
+        document.getElementById('cert-date').innerText = plan.completionDate || new Date().toLocaleDateString('ar-EG');  
+        document.getElementById('cert-duration').innerText = plan.totalDays;  
+        document.getElementById('cert-pages-count').innerText = plan.totalPages;  
+
+        const genderText = plan.gender === 'female' ? 'لإكمالها' : 'لإكماله';  
+        document.getElementById('cert-gender-text').innerText = genderText;  
+
+        document.getElementById('cert-modal').classList.add('active');  
+    }  
+
+    function closeModal() {  
+        document.getElementById('cert-modal').classList.remove('active');  
+    }  
+
+    function renderFruitsPage() {  
+        const container = document.getElementById('fruits-container');  
+        container.innerHTML = '';  
+
+        if (completedPlans.length === 0) {  
+            container.innerHTML = `  
+                <div style="grid-column: span 2; text-align: center; padding: 40px 10px; color: var(--text-muted);">  
+                    <p>لا توجد ثمار مكتملة في السجل حالياً.</p>  
+                </div>  
+            `;  
+            return;  
+        }  
+
+        completedPlans.forEach((plan) => {  
+            const fruitCard = document.createElement('div');  
+            fruitCard.className = 'fruit-item';  
+            fruitCard.onclick = () => showCertificate(plan);  
               
-            const newTarget = await showCustomPrompt("تعديل الورد اليومي", "أدخل الورد اليومي الجديد:", activePlan.dailyTarget);  
-            if (newTarget !== null && newTarget.trim() !== "") {  
-                activePlan.dailyTarget = newTarget.trim();  
-            }  
+            fruitCard.innerHTML = `  
+                <div class="fruit-title">${plan.name}</div>  
+                <div class="fruit-status">مكتملة</div>  
+                <div class="fruit-date">${plan.completionDate || ''}</div>  
+            `;  
+            container.appendChild(fruitCard);  
+        });  
+    }  
 
-            const newTotalPages = await showCustomPrompt("تعديل إجمالي الأوجه", "أدخل إجمالي عدد الأوجه الجديد:", activePlan.totalPages);  
-            if (newTotalPages !== null) {  
-                const parsedPages = parseInt(newTotalPages);  
-                if (!isNaN(parsedPages) && parsedPages > 0) {  
-                    activePlan.totalPages = parsedPages;  
-                }  
-            }  
+    function downloadCertificate() {  
+        showCustomAlert("تم حفظ الشهادة بنجاح.");  
+        closeModal();  
+    }  
+</script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { 
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyDCT_HSc_RKj6EFX-07iGyEeDioi_dk8Es",
+  authDomain: "ghiras-cf0df.firebaseapp.com",
+  projectId: "ghiras-cf0df",
+  storageBucket: "ghiras-cf0df.firebasestorage.app",
+  messagingSenderId: "432856276853",
+  appId: "1:432856276853:web:31223d65953a5c2f4f7d3c",
+  measurementId: "G-GB7R8WP44P"
+};
 
-            localStorage.setItem('ghiras_active_plan', JSON.stringify(activePlan));  
-            showCustomAlert("تم تعديل الخطة بنجاح.");  
-            renderTrackPage();  
-        }  
+const app = initializeApp(firebaseConfig);
 
-        async function deleteCurrentPlan() {  
-            if (!activePlan) return;  
+const auth = getAuth(app)
 
-            const confirmDelete = await showCustomConfirm("هل أنت متأكد من رغبتك في حذف الخطة الحالية والبدء من جديد؟");  
-            if (confirmDelete) {  
-                activePlan = null;  
-                localStorage.removeItem('ghiras_active_plan');  
-                showCustomAlert("تم حذف الخطة بنجاح.");  
-                renderTrackPage();  
-            }  
-        }  
+window.auth = auth;
 
-        function showCertificate(plan) {  
-            document.getElementById('cert-user-name').innerText = plan.userName;  
-            document.getElementById('cert-plan-title').innerText = plan.name;  
-            document.getElementById('cert-date').innerText = plan.completionDate || new Date().toLocaleDateString('ar-EG');  
-            document.getElementById('cert-duration').innerText = plan.totalDays;  
-            document.getElementById('cert-pages-count').innerText = plan.totalPages;  
+window.registerUser = async function () {
 
-            const genderText = plan.gender === 'female' ? 'لإكمالها' : 'لإكماله';  
-            document.getElementById('cert-gender-text').innerText = genderText;  
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
 
-            document.getElementById('cert-modal').classList.add('active');  
-        }  
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
 
-        function closeModal() {  
-            document.getElementById('cert-modal').classList.remove('active');  
-        }  
+    showCustomAlert("تم إنشاء الحساب بنجاح");
 
-        function renderFruitsPage() {  
-            const container = document.getElementById('fruits-container');  
-            container.innerHTML = '';  
+  } catch (error) {
 
-            if (completedPlans.length === 0) {  
-                container.innerHTML = `  
-                    <div style="grid-column: span 2; text-align: center; padding: 40px 10px; color: var(--text-muted);">  
-                        <p>لا توجد ثمار مكتملة في السجل حالياً.</p>  
-                    </div>  
-                `;  
-                return;  
-            }  
+    showCustomAlert(error.message);
 
-            completedPlans.forEach((plan) => {  
-                const fruitCard = document.createElement('div');  
-                fruitCard.className = 'fruit-item';  
-                fruitCard.onclick = () => showCertificate(plan);  
-                  
-                fruitCard.innerHTML = `  
-                    <div class="fruit-title">${plan.name}</div>  
-                    <div class="fruit-status">مكتملة</div>  
-                    <div class="fruit-date" style="font-size:0.8rem; color:var(--text-muted);">${plan.completionDate || ''}</div>  
-                `;  
-                container.appendChild(fruitCard);  
-            });  
-        }  
+  }
 
-        function downloadCertificate() {  
-            showCustomAlert("تم حفظ الشهادة بنجاح.");  
-            closeModal();  
-        }  
-    </script>  
+};
 
-    <!-- ربط Firebase المصادقة -->
-    <script type="module">  
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";  
-        import {   
-          getAuth,  
-          createUserWithEmailAndPassword,  
-          signInWithEmailAndPassword  
-        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";  
+window.loginUser = async function () {
 
-        const firebaseConfig = {  
-          apiKey: "AIzaSyDCT_HSc_RKj6EFX-07iGyEeDioi_dk8Es",  
-          authDomain: "ghiras-cf0df.firebaseapp.com",  
-          projectId: "ghiras-cf0df",  
-          storageBucket: "ghiras-cf0df.firebasestorage.app",  
-          messagingSenderId: "432856276853",  
-          appId: "1:432856276853:web:31223d65953a5c2f4f7d3c",  
-          measurementId: "G-GB7R8WP44P"  
-        };  
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
 
-        const app = initializeApp(firebaseConfig);  
-        const auth = getAuth(app);  
+  try {
 
-        window.auth = auth;  
+    await signInWithEmailAndPassword(auth, email, password);
 
-        window.registerUser = async function () {  
-            const email = document.getElementById("login-email").value.trim();  
-            const password = document.getElementById("login-password").value.trim();  
+    document.getElementById("login-screen").style.display = "none";
+    document.getElementById("app").style.display = "block";
 
-            if (!email || !password) {  
-                showCustomAlert("الرجاء إدخال البريد الإلكتروني وكلمة المرور.");  
-                return;  
-            }  
+  } catch (error) {
 
-            try {  
-                await createUserWithEmailAndPassword(auth, email, password);  
-                showCustomAlert("تم إنشاء الحساب بنجاح، يمكنك تسجيل الدخول الآن.");  
-            } catch (error) {  
-                showCustomAlert(error.message);  
-            }  
-        };  
+    showCustomAlert(error.message);
 
-        window.loginUser = async function () {  
-            const email = document.getElementById("login-email").value.trim();  
-            const password = document.getElementById("login-password").value.trim();  
+  }
 
-            if (!email || !password) {  
-                showCustomAlert("الرجاء إدخال البريد الإلكتروني وكلمة المرور.");  
-                return;  
-            }  
+};
+</script>
+</div>
 
-            try {  
-                await signInWithEmailAndPassword(auth, email, password);  
-                document.getElementById("login-screen").style.display = "none";  
-                document.getElementById("app").style.display = "flex";  
-            } catch (error) {  
-                showCustomAlert(error.message);  
-            }  
-        };  
-    </script>  
 </body>  
-</html>  
+</html>
